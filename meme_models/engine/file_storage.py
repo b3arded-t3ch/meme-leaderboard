@@ -8,7 +8,7 @@ class Meme_Manager:
     
 
     save_meme: Serializes the meme object then saves to the database
-    get_meme: Retrieves the image, then deserializes it
+    get_meme: Retrieves the image from database, then deserializes it
     __objects: A dictionary that contains all image objects
     __file_path: The location of an image
 
