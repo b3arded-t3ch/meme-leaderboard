@@ -4,8 +4,11 @@ import json
 
 class Meme_Manager:
     """
-    This class handles adding and fetching images from the database
+    This class handles adding and fetching images from the database.
+    
 
+    save_meme: Serializes the meme object then saves to the database
+    get_meme: Retrieves the image, then deserializes it
     __objects: A dictionary that contains all image objects
     __file_path: The location of an image
 
@@ -13,7 +16,7 @@ class Meme_Manager:
     __objects = {}
     __file_path = "file.json"
 
-    def save_img(self)
+    def save_meme(self)
     """serializes __objects to the JSON file"""
     __objects_dict = {}
     for key, value in self.__objects.items():
@@ -26,7 +29,7 @@ class Meme_Manager:
         return False
 
 
-    def get_img(self):
+    def get_meme(self):
         """deserializes the JSON file to __objects"""
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, 'r', encoding="utf-8") as json_img_file:
