@@ -1,5 +1,13 @@
 #!/usr/bin/python3
-from  file_storage import save_meme, get_meme
+
+class MemeDatabase:
+    """defines methods for storage systems"""
+    def save_meme(self, meme):
+        raise NotImplementedError
+    def get_num_memes(self):
+        raise NotImplementedError
+    def get_all_memes(self):
+        raise NotImplementedError
 
 class MemeController:
     """
@@ -18,18 +26,9 @@ class MemeController:
         else:
             self.meme_database.save_meme(meme)
 
-    def get_all_memes(self):
+    def get_all_imgs(self):
         """retrieves all memes from the database"""
         return self.meme_database.get_meme()
-
-class MemeDatabase:
-    """defines methods for storage systems"""
-    def save_meme(self, meme):
-        raise NotImplementedError
-    def get_num_memes(self):
-        raise NotImplementedError
-    def get_all_memes(self):
-        raise NotImplementedError
 
 class InMemoryMemeDatabase(MemeDatabase):
     """uses a simple list to store images"""
@@ -41,3 +40,6 @@ class InMemoryMemeDatabase(MemeDatabase):
         """function to save meme)"""
         self.images.append(img)
 
+    def get_all_imgs(self):
+        """retrieves all images"""
+        return self.images
