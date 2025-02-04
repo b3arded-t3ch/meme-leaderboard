@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 class MemeDatabase:
-    """defines methods for storage systems"""
+    """defines abstract class containing methods for storage systems"""
     def save_meme(self, meme):
         raise NotImplementedError
     def get_num_memes(self):
@@ -13,6 +13,7 @@ class MemeController:
     """
     This is the class to manage the meming.
     It contains methods for the business logic of the app
+    It is more like the class for image model
     """
 
     def __init__(self, meme_database: MemeDatabase):
@@ -24,11 +25,11 @@ class MemeController:
         if not isinstance(meme, str):
             raise ValueError("invalid format")
         else:
-            self.meme_database.save_meme(meme)
+            self.meme_database.save_img(meme)
 
     def get_all_imgs(self):
         """retrieves all memes from the database"""
-        return self.meme_database.get_meme()
+        return self.meme_database.get_all_imgs()
 
 class InMemoryMemeDatabase(MemeDatabase):
     """uses a simple list to store images"""
