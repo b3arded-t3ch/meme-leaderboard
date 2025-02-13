@@ -37,7 +37,7 @@ class InMemoryMemeDatabase(MemeDatabase):
         self.images = []
 
     def save_meme(self, img):
-        """function to save meme)"""
+        """function to save meme"""
         self.images.append(img)
 
     def get_all_memes(self):
@@ -49,12 +49,12 @@ class SqliteDatabase(MemeDatabase):
     def __init__(self):
         self.con = sqlite3.connect("meme_db")
         self.cur = self.con.cursor()
-        self.cur.execute("CREATE TABLE IF NOT EXISTS images (
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS images (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         imgfile BLOB
-                        )")
+                        )""")
     def save_meme(self, img_path):
-        """insert"""
+        """insert image"""
         with open(img_path, 'rb') as f:
             image_data = f.read()
         self.cur.execute("INSERT INTO images(imgfile) VALUES(?)", (image_data,))

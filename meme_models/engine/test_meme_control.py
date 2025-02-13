@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-from meme_control import MemeController, InMemoryMemeDatabase 
+from meme_control import MemeController, SqliteDatabase
 
-def test_can_save_img():
+def test_can_save_meme():
     """To test user can save image"""
-    images_inventory = InMemoryMemeDatabase()
-    images_inventory.save_img("img_001")
-    assert "img_001" in images_inventory.get_all_imgs()
+    images_inventory = SqliteDatabase()
+    images_inventory.save_meme("new_img.jpeg")
+    assert "new_img.jpeg" in images_inventory.get_all_memes()
